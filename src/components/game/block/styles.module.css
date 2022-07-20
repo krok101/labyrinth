@@ -16,6 +16,27 @@
   background: rgb(43, 155, 33);
 }
 
-.finish {
-  background: rgb(49, 12, 134);
+.yellow {
+  background: rgb(212, 164, 75);
+}
+
+.bingo {
+  background: rgb(11, 148, 23);
+  border-radius: 2rem;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  display: none;
+}
+.bingo .indicator {
+  display: block;
+  background: rgb(23, 161, 42);
+}
+
+.fail .indicator {
+  display: block;
+  background: red;
 }

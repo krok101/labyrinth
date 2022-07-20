@@ -1,10 +1,9 @@
 import { GameField } from "../../components"
 
 const Index = () => {
-  console.log('++++');
   return (
     <div>
-      <div>index page</div>
+      <div>Labyrinth game</div>
       <GameField />
     </div>
   )

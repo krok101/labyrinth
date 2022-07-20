@@ -1,7 +1,10 @@
 import styles from './styles.module.css'
 
-const Block = ({mode}) => (
-  <div className={`${styles.block} ${styles[mode]}`}></div>
+const Block = ({data}) => (
+  <div className={`${styles.block} ${styles[data.mode]}`} onClick={data.onClick}>
+    <div className={styles.indicator}></div>
+  </div>
 )
+
 
 export default Block
