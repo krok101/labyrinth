@@ -1,9 +1,10 @@
 import { GameField } from "../../components"
+import styles from './styles.module.css'
 
 const Index = () => {
   return (
     <div>
-      <div>Labyrinth game</div>
+      <h1 className={styles.title}>лабиринт</h1>
       <GameField />
     </div>
   )

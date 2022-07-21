@@ -3,8 +3,11 @@ import Block from "./block/Block"
 import styles from './styles.module.css'
 import { useState } from "react"
 import { generateLevel } from "./halpers"
+import { ReactComponent as Restart } from '../../assets/icons/restart.svg'
+import { ReactComponent as Arrow} from '../../assets/icons/arrow.svg'
 
 const GameField = () => {
+  console.log('render game field');
   const [levelInfo, setLevelInfo] = useState(generateLevel());
   const [clickPosition, setClickPosition] = useState([]); // progress, end
 
@@ -65,8 +68,8 @@ const GameField = () => {
       <div className={styles.container}>
         {getField()}
       </div>
-      <div>{levelInfo.path.join(', ')}</div>
-      <button onClick={restart}>Generate level</button>
+      <div className={styles.path}>{levelInfo.path.map(arrow => <Arrow className={styles.arrow + ' ' + styles[`arrow_${arrow}`]}/>)}</div>
+      <button onClick={restart} className={styles.button}>Обновить <Restart className={styles.updateIcon}/></button>
     </div>
   )
 }
