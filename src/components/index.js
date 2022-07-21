@@ -1,1 +1,1 @@
-export { default as GameField } from "./game/GameField";
+export { default as GameLabyrinth } from './game/GameLabyrinth';

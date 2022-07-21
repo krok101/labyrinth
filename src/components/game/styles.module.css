@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+.overlay {
+  pointer-events: none;
+}
+
 .space {
   width: 100%
 }

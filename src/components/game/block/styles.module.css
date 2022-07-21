@@ -10,6 +10,15 @@
   background: rgb(255, 102, 0);
   cursor: pointer;
   border-radius: 8px;
+  transition: 0.7s;
+}
+
+.bingo {
+  background: rgb(212, 164, 75);
+}
+
+.fail {
+  background: rgb(212, 164, 75);
 }
 
 .start {
@@ -18,6 +27,7 @@
 
 .yellow {
   background: rgb(212, 164, 75);
+  transition: .8s;
 }
 
 .start-grey {

@@ -1,25 +1,22 @@
-import config from "./config"
-import Block from "./block/Block"
+import config from './config'
+import Block from './block/Block'
 import styles from './styles.module.css'
-import { useState } from "react"
-import { generateLevel } from "./halpers"
+import { useState } from 'react'
+import { generateLevel } from './halpers'
 import { ReactComponent as Restart } from '../../assets/icons/restart.svg'
 import { ReactComponent as Arrow} from '../../assets/icons/arrow.svg'
 
-const GameField = () => {
-  console.log('render game field');
+const GameLabyrinth = () => {
   const [levelInfo, setLevelInfo] = useState(generateLevel());
   const [clickPosition, setClickPosition] = useState([]); // progress, end
 
   const onClickByBlock = (pos) => setClickPosition(pos)
-
   const getField = () => {
     const x = config.fieldSize[0]
     const y = config.fieldSize[1]
     const { start, finish } = levelInfo
     const arrOfBlock = []
-
-    const gameResult = (finish[0] === clickPosition[0] && clickPosition[1] === finish[1])
+    const GameLabyrinthResult = (finish[0] === clickPosition[0] && clickPosition[1] === finish[1])
 
     const getDataForBlock = (pos) => {
       let mode = 'orange'
@@ -32,10 +29,10 @@ const GameField = () => {
 
         // показываем индикатор на блоке который кликнули в зависимости верного/неверного клика
         if (pos[0] === clickPosition[0] && pos[1] === clickPosition[1]) {
-          mode = gameResult ? 'bingo' : 'fail';
+          mode = GameLabyrinthResult ? 'bingo' : 'fail';
         }
 
-        if (!gameResult && pos[0] === finish[0] && pos [1] === finish[1]) {
+        if (!GameLabyrinthResult && pos[0] === finish[0] && pos[1] === finish[1]) {
           mode = 'bingo'
         }
       }
@@ -65,13 +62,15 @@ const GameField = () => {
 
   return (
     <div>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${clickPosition.length ? styles.overlay : ''}`}>
         {getField()}
       </div>
-      <div className={styles.path}>{levelInfo.path.map(arrow => <Arrow className={styles.arrow + ' ' + styles[`arrow_${arrow}`]}/>)}</div>
-      <button onClick={restart} className={styles.button}>Обновить <Restart className={styles.updateIcon}/></button>
+      <div className={styles.path}>
+        {levelInfo.path.map(arrow => <Arrow className={styles.arrow + ' ' + styles[`arrow_${arrow}`]}/>)}
+      </div>
+      <button onClick={restart} className={styles.button}>Обновить<Restart className={styles.updateIcon}/></button>
     </div>
   )
 }
 
-export default GameField
+export default GameLabyrinth
