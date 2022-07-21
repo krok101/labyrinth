@@ -1,0 +1,2 @@
+export const SET_FIELD_SIZE = 'SET_FIELD_SIZE'
+export const SET_COUNT_STEPS = 'SET_COUNT_STEPS'

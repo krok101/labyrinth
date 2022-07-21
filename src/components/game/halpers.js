@@ -1,9 +1,7 @@
-import config from "./config"
-
 const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-export const generateLevel = () => {
-  const startPoint = [random(0, config.fieldSize[0] - 1), random(0, config.fieldSize[1] - 1)]
+export const generateLevel = (fieldSize, countSteps = 10) => {
+  const startPoint = [random(0, fieldSize[0] - 1), random(0, fieldSize[1] - 1)]
   const path = []
   const finish = [...startPoint]
 
@@ -13,11 +11,11 @@ export const generateLevel = () => {
     const rightDirection = []
     if (finish[0] > 0)
       rightDirection.push('left')
-    if (finish[0] < config.fieldSize[0] - 1)
+    if (finish[0] < fieldSize[0] - 1)
       rightDirection.push('right')
     if (finish[1] > 0)
       rightDirection.push('top')
-    if (finish[1] < config.fieldSize[1] - 1)
+    if (finish[1] < fieldSize[1] - 1)
       rightDirection.push('bottom')
 
     // случайно выбираем направление
@@ -34,7 +32,7 @@ export const generateLevel = () => {
       finish[1]  += 1;
   }
 
-  for (let i = 0; i < config.countSteps; i++)
+  for (let i = 0; i < countSteps; i++)
     getNextStep();
 
   return {
